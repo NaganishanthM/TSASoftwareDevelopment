@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from 'react';
 
-// --- HELPER FUNCTIONS ---
+//  HELPER FUNCTIONS 
 const formatDateInfo = (dateObj) => {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -41,7 +41,7 @@ const DateStrip = ({ onDateSelected }) => {
   const isResetting = useRef(false); 
   const targetScrollId = useRef(null);
 
-  // --- STYLES ---
+  //  STYLES 
   const mainGradient = 'linear-gradient(90deg, rgba(0, 183, 255, 0.7) 0%, rgba(185, 7, 255, 0.7) 100%)';
   const richGradientStr = `${mainGradient}, ${mainGradient}, ${mainGradient}`;
 
@@ -49,7 +49,7 @@ const DateStrip = ({ onDateSelected }) => {
     if(onDateSelected) onDateSelected(dates[20].id);
   }, []);
 
-  // --- CORE ANIMATION LOOP (CLEAN VERSION) ---
+  //  CORE ANIMATION LOOP (CLEAN VERSION) 
   // Removed all "Push" and "Margin" logic. Only Scale and Opacity.
   const updateVisuals = useCallback(() => {
     if (!scrollRef.current) return;
@@ -127,7 +127,7 @@ const DateStrip = ({ onDateSelected }) => {
   }, [dates, currentTitle]);
 
 
-  // --- SCROLL HANDLER ---
+  //  SCROLL HANDLER 
   const handleScroll = () => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(updateVisuals);

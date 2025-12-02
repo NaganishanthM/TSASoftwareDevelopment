@@ -5,7 +5,7 @@ import { Calendar, CheckCircle, FileText, Clock, ArrowUpRight, X } from 'lucide-
 const SearchScreen = ({ events, tasks, notes, onClose, onNavigate }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // --- 1. SMART SUGGESTIONS LOGIC ---
+  //  1. SMART SUGGESTIONS LOGIC 
   const smartSuggestions = useMemo(() => {
     const suggestions = new Set();
     
@@ -29,7 +29,7 @@ const SearchScreen = ({ events, tasks, notes, onClose, onNavigate }) => {
   }, [events, tasks, notes]);
 
 
-  // --- 2. SEARCH LOGIC ---
+  //  2. SEARCH LOGIC 
   const results = useMemo(() => {
     if (!searchQuery.trim()) return [];
 
@@ -61,7 +61,7 @@ const SearchScreen = ({ events, tasks, notes, onClose, onNavigate }) => {
     return combined;
   }, [searchQuery, events, tasks, notes]);
 
-  // --- RENDER HELPERS ---
+  //  RENDER HELPERS 
   const getIcon = (type) => {
       switch(type) {
           case 'event': return <Calendar size={20} className="text-[#00B7FF]" />;
@@ -104,7 +104,7 @@ const SearchScreen = ({ events, tasks, notes, onClose, onNavigate }) => {
                 </button>
             </div>
 
-            {/* --- SCROLLABLE RESULTS AREA --- */}
+            {/*  SCROLLABLE RESULTS AREA  */}
             <div className="flex-1 flex flex-col overflow-y-auto no-scrollbar px-[20px] pt-[80px] pb-32 pointer-events-auto">
                 
                 {/* WRAPPER FOR BOTTOM ALIGNMENT (Restored) */}
@@ -202,7 +202,7 @@ const SearchScreen = ({ events, tasks, notes, onClose, onNavigate }) => {
                 <div className="h-4 shrink-0"></div>
             </div>
 
-            {/* --- BOTTOM SEARCH BAR --- */}
+            {/*  BOTTOM SEARCH BAR  */}
             <div className="absolute bottom-[30px] left-0 w-full px-[20px] z-50 pointer-events-auto">
                 <SearchBar 
                     value={searchQuery}

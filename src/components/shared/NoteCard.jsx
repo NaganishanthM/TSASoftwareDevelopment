@@ -9,7 +9,7 @@ const NoteCard = ({ title, preview, onClick }) => {
         onClick={onClick}
         className="relative w-[167px] h-[244px] shrink-0 group cursor-pointer active:scale-[0.98] transition-transform"
     >
-        {/* --- GRADIENT BORDER STROKE --- */}
+        {/*  GRADIENT BORDER STROKE  */}
         <div 
             className="absolute inset-0 pointer-events-none rounded-[40px] z-20"
             style={{
@@ -22,7 +22,7 @@ const NoteCard = ({ title, preview, onClick }) => {
             }}
         />
 
-        {/* --- CARD CONTENT --- */}
+        {/*  CARD CONTENT  */}
         <div 
             className="absolute inset-0 w-full h-full rounded-[40px] overflow-hidden flex flex-col items-center p-4 z-10"
             style={{

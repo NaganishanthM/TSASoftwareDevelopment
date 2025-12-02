@@ -86,7 +86,7 @@ const TaskCard = ({ title, subtitle, isCompleted, priority = 'normal', onToggle,
             borderRadius: '40px'
         }}
     >
-       {/* --- GRADIENT BORDER STROKE --- */}
+       {/*  GRADIENT BORDER STROKE  */}
        <div 
           className="absolute inset-0 pointer-events-none rounded-[40px] z-20"
           style={{
@@ -99,7 +99,7 @@ const TaskCard = ({ title, subtitle, isCompleted, priority = 'normal', onToggle,
           }}
       />
 
-      {/* --- CARD CONTENT WRAPPER --- */}
+      {/*  CARD CONTENT WRAPPER  */}
       <div 
         className="flex items-center h-full px-6 gap-4 relative z-10 overflow-hidden rounded-[40px]"
         style={{
@@ -109,7 +109,7 @@ const TaskCard = ({ title, subtitle, isCompleted, priority = 'normal', onToggle,
         }}
       >
         
-        {/* --- LEFT: CHECKBOX CONTAINER --- */}
+        {/*  LEFT: CHECKBOX CONTAINER  */}
         <button 
             onClick={handleCheckClick}
             className="w-[40px] h-[40px] shrink-0 rounded-full relative flex items-center justify-center transition-all"
@@ -136,7 +136,7 @@ const TaskCard = ({ title, subtitle, isCompleted, priority = 'normal', onToggle,
              )}
         </button>
 
-        {/* --- CENTER: TEXT --- */}
+        {/*  CENTER: TEXT  */}
         <div className="flex-1 min-w-0 flex flex-col justify-center">
             <h3 
                 className={`font-semibold truncate transition-colors ${isCompleted ? 'text-[#B0B0B0]' : 'text-[#E5E5E5]'}`}
@@ -158,7 +158,7 @@ const TaskCard = ({ title, subtitle, isCompleted, priority = 'normal', onToggle,
             </p>
         </div>
 
-        {/* --- RIGHT: PRIORITY INDICATOR --- */}
+        {/*  RIGHT: PRIORITY INDICATOR  */}
         <div className="shrink-0 w-[24px] flex justify-center items-center">
             {renderPriorityIndicator()}
         </div>

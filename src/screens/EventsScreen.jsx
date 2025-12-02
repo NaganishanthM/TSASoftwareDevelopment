@@ -23,7 +23,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
   // Filter events for the currently selected date
   const filteredEvents = events.filter(e => e.date === selectedDate);
 
-  // --- LISTEN FOR NAVIGATION FROM SEARCH ---
+  //  LISTEN FOR NAVIGATION FROM SEARCH 
   useEffect(() => {
     if (itemToOpen && itemToOpen.type === 'event') {
         setSelectedDate(itemToOpen.data.date); // Switch date strip to event date
@@ -33,7 +33,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
     }
   }, [itemToOpen]);
 
-  // --- HANDLERS: INTERACTION ---
+  //  HANDLERS: INTERACTION 
 
   // 1. Long Press Detector (For FAB)
   const handlePointerDown = () => {
@@ -57,7 +57,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
     setIsQuickInputOpen(true);
   };
 
-  // --- HANDLERS: ACTIONS ---
+  //  HANDLERS: ACTIONS 
 
   const handleAddNew = () => {
     setEditingEvent(null); // Clear editing state (New Mode)
@@ -79,7 +79,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
     }
   };
 
-  // --- HANDLERS: NLP SUBMISSION ---
+  //  HANDLERS: NLP SUBMISSION 
   const handleQuickInputEnter = (text) => {
     // 1. Parse Text
     const result = parseNaturalLanguage(text, new Date());
@@ -105,7 +105,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
   return (
     <div className="h-full w-full relative bg-black overflow-hidden">
       
-      {/* --- TIMELINE LAYER (Background) --- */}
+      {/*  TIMELINE LAYER (Background)  */}
       {/* Stretches to fill screen, sits behind DateStrip */}
       <div className="absolute inset-0 z-0">
         <TimeTimeline 
@@ -115,7 +115,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
         />
       </div>
 
-      {/* --- DATE HEADER LAYER (Foreground) --- */}
+      {/*  DATE HEADER LAYER (Foreground)  */}
       {/* mt-[26px] positions it below the status bar */}
       <div className="absolute top-0 left-0 w-full z-20 mt-[26px] pointer-events-none">
         <div className="pointer-events-auto">
@@ -123,7 +123,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
         </div>
       </div>
 
-      {/* --- QUICK INPUT BAR (Overlay) --- */}
+      {/*  QUICK INPUT BAR (Overlay)  */}
       {isQuickInputOpen && (
           <QuickInputBar 
             onEnter={handleQuickInputEnter} 
@@ -131,7 +131,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
           />
       )}
 
-      {/* --- FAB (Floating Action Button) --- */}
+      {/*  FAB (Floating Action Button)  */}
       <div className="absolute bottom-[110px] right-[20px] z-[60]">
           <button 
             className="flex items-center justify-center active:scale-95 transition-transform select-none outline-none"
@@ -154,7 +154,7 @@ const EventsScreen = ({ events, onAddEvent, onUpdateEvent, onDeleteEvent, itemTo
           </button>
       </div>
 
-      {/* --- FULL MODAL (Add/Edit) --- */}
+      {/*  FULL MODAL (Add/Edit)  */}
       <AddEventModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 

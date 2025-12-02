@@ -9,17 +9,17 @@ import MenuScreen from './screens/MenuScreen';
 import SearchScreen from './screens/SearchScreen';
 
 const App = () => {
-  // --- NAVIGATION STATE ---
+  //  NAVIGATION STATE 
   const [currentScreen, setCurrentScreen] = useState('dashboard');
   const [isSearchOpen, setIsSearchOpen] = useState(false); 
   const [itemToOpen, setItemToOpen] = useState(null); // For opening specific items from search
 
-  // --- STATUS BAR STATE ---
+  //  STATUS BAR STATE 
   const [time, setTime] = useState(new Date());
   const [sessionSeconds, setSessionSeconds] = useState(0);
   const [batteryLevel, setBatteryLevel] = useState(69);
 
-  // --- GLOBAL DATA: EVENTS (Calendar) ---
+  //  GLOBAL DATA: EVENTS (Calendar) 
   const [events, setEvents] = useState([
     { 
       id: '1', 
@@ -47,7 +47,7 @@ const App = () => {
     }
   ]);
 
-  // --- GLOBAL DATA: TASKS (Reminders) ---
+  //  GLOBAL DATA: TASKS (Reminders) 
   const [tasks, setTasks] = useState([
     { 
       id: '1', 
@@ -106,14 +106,14 @@ const App = () => {
     },
   ]);
 
-  // --- GLOBAL DATA: NOTES (Notebook) ---
+  //  GLOBAL DATA: NOTES (Notebook) 
   const [notes, setNotes] = useState([
     { id: '1', title: 'Physics Formulas', subject: 'Science', content: 'F=ma, E=mc^2, p=mv...' },
     { id: '2', title: 'Project Ideas', subject: 'TSA', content: '1. Accessibility app\n2. Time management tool\n3. AI Tutor' },
     { id: '3', title: 'Grocery List', subject: 'Personal', content: 'Milk, Eggs, Bread, Butter, Coffee...' },
   ]);
 
-  // --- EFFECT: CLOCK & TIMER ---
+  //  EFFECT: CLOCK & TIMER 
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(new Date());
@@ -145,7 +145,7 @@ const App = () => {
     return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  // --- HANDLERS: EVENTS ---
+  //  HANDLERS: EVENTS 
   const handleSaveEvent = (newEvent) => setEvents([...events, newEvent]);
   
   const handleUpdateEvent = (updatedEvent) => {
@@ -156,7 +156,7 @@ const App = () => {
     setEvents(events.filter(e => e.id !== eventId));
   };
 
-  // --- HANDLERS: TASKS ---
+  //  HANDLERS: TASKS 
   const handleAddTask = (newTask) => {
     setTasks([...tasks, newTask]);
   };
@@ -173,7 +173,7 @@ const App = () => {
     setTasks(tasks.map(t => String(t.id) === String(id) ? { ...t, completed: !t.completed } : t));
   };
 
-  // --- HANDLERS: NOTES ---
+  //  HANDLERS: NOTES 
   const handleSaveNote = (noteData) => {
     const existing = notes.find(n => n.id === noteData.id);
     if (existing) {
@@ -187,7 +187,7 @@ const App = () => {
       setNotes(notes.filter(n => n.id !== noteId));
   };
 
-  // --- NAVIGATION HANDLER ---
+  //  NAVIGATION HANDLER 
   const handleSearchNavigation = (type, data) => {
       // 1. Close Search Overlay
       setIsSearchOpen(false);
@@ -203,7 +203,7 @@ const App = () => {
 
   const clearItemToOpen = () => setItemToOpen(null);
 
-  // --- ROUTING ---
+  //  ROUTING 
   const renderScreen = () => {
       switch(currentScreen) {
           case 'dashboard': 
@@ -255,7 +255,7 @@ const App = () => {
   return (
     <div className="flex flex-col w-full h-screen overflow-hidden relative font-sans bg-black">
       
-      {/* --- FUNCTIONAL STATUS BAR (Z-INDEX 300) --- */}
+      {/*  FUNCTIONAL STATUS BAR (Z-INDEX 300)  */}
       <div className="flex justify-between items-center px-6 pt-4 pb-2 text-white text-sm font-medium z-[300] absolute top-0 left-0 right-0 pointer-events-none">
         <div className="flex items-center gap-4">
             <span style={{ fontFamily: 'Lexend' }}>{formattedTime}</span>
@@ -274,19 +274,19 @@ const App = () => {
         </div>
       </div>
 
-      {/* --- MAIN CONTENT --- */}
+      {/*  MAIN CONTENT  */}
       <div className="flex-1 overflow-y-auto no-scrollbar">
           {renderScreen()}
       </div>
 
-      {/* --- NAVIGATION --- */}
+      {/*  NAVIGATION  */}
       <NavBar 
         currentScreen={currentScreen} 
         setCurrentScreen={setCurrentScreen}
         onSearchClick={() => setIsSearchOpen(true)} 
       />
 
-      {/* --- GLOBAL SEARCH OVERLAY --- */}
+      {/*  GLOBAL SEARCH OVERLAY  */}
       {isSearchOpen && (
         <SearchScreen 
             events={events} 

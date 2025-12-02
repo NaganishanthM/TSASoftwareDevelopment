@@ -37,7 +37,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, onDelete, selectedDate, eventT
 
   if (!isOpen) return null;
 
-  // --- HANDLERS ---
+  //  HANDLERS 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -80,7 +80,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, onDelete, selectedDate, eventT
       }
   };
 
-  // --- STYLES ---
+  //  STYLES 
   const richGradientStr = `linear-gradient(90deg, rgba(0, 183, 255, 0.7) 0%, rgba(185, 7, 255, 0.7) 100%)`;
   // CSS class for inputs with gradient border on focus
   const inputStyle = "gradient-input w-full bg-[#17171A] text-[#E5E5E5] rounded-[20px] px-4 py-3 outline-none border border-white/10 transition-all font-light placeholder-white/20";

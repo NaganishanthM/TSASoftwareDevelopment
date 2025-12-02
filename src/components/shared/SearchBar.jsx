@@ -6,7 +6,7 @@ const SearchBar = ({ value, onChange }) => {
   const recognitionRef = useRef(null);
   const silenceTimer = useRef(null); 
 
-  // --- SPEECH LOGIC ---
+  //  SPEECH LOGIC 
   const toggleListening = () => {
     if (isListening) {
       stopListening();

@@ -5,14 +5,14 @@ import NoteEditor from '../components/shared/NoteEditor';
 import SearchBar from '../components/shared/SearchBar'; 
 
 const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, clearItemToOpen }) => {
-  // --- UI STATE ---
+  //  UI STATE 
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [editingNote, setEditingNote] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   const richGradientStr = `linear-gradient(90deg, rgba(0, 183, 255, 0.7) 0%, rgba(185, 7, 255, 0.7) 100%)`;
 
-  // --- LISTEN FOR NAVIGATION FROM GLOBAL SEARCH ---
+  //  LISTEN FOR NAVIGATION FROM GLOBAL SEARCH 
   useEffect(() => {
     if (itemToOpen && itemToOpen.type === 'note') {
         setEditingNote(itemToOpen.data);
@@ -21,7 +21,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
     }
   }, [itemToOpen]);
 
-  // --- SEARCH & SORT LOGIC ---
+  //  SEARCH & SORT LOGIC 
   const filteredNotes = useMemo(() => {
     if (!searchQuery) return notes;
     
@@ -48,7 +48,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
     });
   }, [notes, searchQuery]);
 
-  // --- HANDLERS ---
+  //  HANDLERS 
   const handleSave = (noteData) => {
       onSaveNote(noteData);
   };
@@ -73,7 +73,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
   return (
     <div className="h-full w-full relative bg-black overflow-hidden flex flex-col">
       
-      {/* --- SEARCH BAR --- */}
+      {/*  SEARCH BAR  */}
       {/* Positioned at top: 90px padding to match design */}
       <div className="px-[20px] pt-[90px] pb-4 shrink-0 z-20">
          <SearchBar 
@@ -82,7 +82,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
          />
       </div>
 
-      {/* --- TOP FADE OVERLAY --- */}
+      {/*  TOP FADE OVERLAY  */}
       <div 
         className="absolute left-0 w-full h-[50px] pointer-events-none z-10"
         style={{
@@ -92,7 +92,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
         }}
       />
 
-      {/* --- NOTES GRID --- */}
+      {/*  NOTES GRID  */}
       <div className="flex-1 w-full relative overflow-y-auto no-scrollbar px-[27px] pb-32">
           <div className="grid grid-cols-2 gap-x-[24px] gap-y-[24px] pb-20 pt-4">
               {filteredNotes.map(note => (
@@ -106,7 +106,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
           </div>
       </div>
 
-      {/* --- BOTTOM FADE --- */}
+      {/*  BOTTOM FADE  */}
       <div 
         className="absolute bottom-0 left-0 w-full h-[150px] pointer-events-none z-20"
         style={{
@@ -115,7 +115,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
         }}
       />
 
-      {/* --- FAB (Standard Click) --- */}
+      {/*  FAB (Standard Click)  */}
       <div className="absolute bottom-[110px] right-[20px] z-[60]">
           <button 
             className="flex items-center justify-center active:scale-95 transition-transform select-none outline-none"
@@ -134,7 +134,7 @@ const NotesScreen = ({ notes, onSaveNote, onDeleteNote, onAddEvent, itemToOpen, 
           </button>
       </div>
 
-      {/* --- FULL EDITOR --- */}
+      {/*  FULL EDITOR  */}
       {isEditorOpen && (
           <NoteEditor 
             note={editingNote}

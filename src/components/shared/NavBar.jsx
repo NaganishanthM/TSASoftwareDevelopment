@@ -29,7 +29,7 @@ const NavBar = ({ currentScreen, setCurrentScreen, onSearchClick }) => {
   return (
     <div className="absolute bottom-6 left-0 right-0 flex justify-center items-center z-50 pointer-events-none">
       
-      {/* --- RECTANGLE 13: BOTTOM FADE GRADIENT --- */}
+      {/*  RECTANGLE 13: BOTTOM FADE GRADIENT  */}
       <div 
         className="absolute pointer-events-none"
         style={{
@@ -44,7 +44,7 @@ const NavBar = ({ currentScreen, setCurrentScreen, onSearchClick }) => {
 
       <div className="flex gap-4 items-center relative z-10">
         
-        {/* --- MAIN NAVIGATION PILL --- */}
+        {/*  MAIN NAVIGATION PILL  */}
         <div 
             className="relative flex items-center px-1 pointer-events-auto"
             style={{
@@ -102,7 +102,7 @@ const NavBar = ({ currentScreen, setCurrentScreen, onSearchClick }) => {
             })}
         </div>
 
-        {/* --- SEARCH BUTTON --- */}
+        {/*  SEARCH BUTTON  */}
         <button 
             onClick={onSearchClick} // Triggers the Global Search Overlay
             className="flex items-center justify-center pointer-events-auto active:scale-95 transition-transform duration-300"

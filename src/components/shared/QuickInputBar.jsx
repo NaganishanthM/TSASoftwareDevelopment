@@ -50,7 +50,7 @@ const QuickInputBar = ({ onEnter, onClose }) => {
     }
   };
 
-  // --- PHASE 1: MAIN RECORDING ---
+  //  PHASE 1: MAIN RECORDING 
   const startMainRecording = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
@@ -120,7 +120,7 @@ const QuickInputBar = ({ onEnter, onClose }) => {
     recognition.start();
   };
 
-  // --- PHASE 2: CONFIRMATION FLOW ---
+  //  PHASE 2: CONFIRMATION FLOW 
   const startConfirmationFlow = () => {
       isConfirmingRef.current = true;
       setIsListening(true); 
@@ -162,7 +162,7 @@ const QuickInputBar = ({ onEnter, onClose }) => {
     recognition.start();
   };
 
-  // --- PHASE 3: LOGIC ---
+  //  PHASE 3: LOGIC 
   const handleConfirmationResponse = (answer) => {
       if (silenceTimer.current) clearTimeout(silenceTimer.current);
       
@@ -199,7 +199,7 @@ const QuickInputBar = ({ onEnter, onClose }) => {
       }
   };
 
-  // --- TIMERS ---
+  //  TIMERS 
   const resetSilenceTimer = (ms) => {
       if (silenceTimer.current) clearTimeout(silenceTimer.current);
       silenceTimer.current = setTimeout(() => {

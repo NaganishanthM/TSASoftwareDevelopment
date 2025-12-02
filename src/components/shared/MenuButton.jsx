@@ -12,7 +12,7 @@ const MenuButton = ({ icon: Icon, label, onClick, isDanger }) => {
         className="relative w-full h-[100px] shrink-0 group active:scale-[0.98] transition-transform outline-none"
         style={{ borderRadius: '40px' }}
     >
-        {/* --- GRADIENT BORDER STROKE --- */}
+        {/*  GRADIENT BORDER STROKE  */}
         <div 
             className="absolute inset-0 pointer-events-none rounded-[40px] z-20"
             style={{
@@ -25,7 +25,7 @@ const MenuButton = ({ icon: Icon, label, onClick, isDanger }) => {
             }}
         />
 
-        {/* --- CONTENT WRAPPER --- */}
+        {/*  CONTENT WRAPPER  */}
         <div 
             className="absolute inset-0 w-full h-full rounded-[40px] flex items-center px-7 overflow-hidden z-10"
             style={{

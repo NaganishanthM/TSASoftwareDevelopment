@@ -32,7 +32,7 @@ const NoteEditor = ({ note, onClose, onSave, onDelete, onAddEvent }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // --- AUDIO FILE UPLOAD & SMART SIMULATION ---
+  //  AUDIO FILE UPLOAD & SMART SIMULATION 
   const handleAudioUploadClick = () => {
       audioInputRef.current?.click();
   };
@@ -70,7 +70,7 @@ const NoteEditor = ({ note, onClose, onSave, onDelete, onAddEvent }) => {
       }, 2500);
   };
 
-  // --- REAL EVENT CREATION LOGIC ---
+  //  REAL EVENT CREATION LOGIC 
   const handleAcceptSuggestion = () => {
       // 1. Calculate "Tomorrow" based on current date
       const tomorrow = new Date();
@@ -100,7 +100,7 @@ const NoteEditor = ({ note, onClose, onSave, onDelete, onAddEvent }) => {
       setSmartSuggestion(null);
   };
 
-  // --- LIVE TRANSCRIPTION ---
+  //  LIVE TRANSCRIPTION 
   const toggleTranscription = () => {
     if (isListening) stopTranscription();
     else startTranscription();
@@ -147,7 +147,7 @@ const NoteEditor = ({ note, onClose, onSave, onDelete, onAddEvent }) => {
       if (recognitionRef.current) recognitionRef.current.stop();
   };
 
-  // --- ATTACHMENTS ---
+  //  ATTACHMENTS 
   const handleAttachClick = () => fileInputRef.current?.click();
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -307,7 +307,7 @@ const NoteEditor = ({ note, onClose, onSave, onDelete, onAddEvent }) => {
             </div>
         </div>
 
-        {/* --- SMART SUGGESTION TOAST --- */}
+        {/*  SMART SUGGESTION TOAST  */}
         {smartSuggestion && (
             <div className="absolute bottom-[100px] left-6 right-6 z-50 animate-slide-up">
                 <div className="relative w-full rounded-[24px] overflow-hidden p-[1.5px]">

@@ -20,7 +20,7 @@ const TimeTimeline = ({ events, selectedDate, onEventClick }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // --- AUTO-SCROLL TO CURRENT TIME ---
+  //  AUTO-SCROLL TO CURRENT TIME 
   useEffect(() => {
     if (scrollContainerRef.current) {
         const now = new Date();

@@ -8,7 +8,7 @@ import QuickInputBar from '../components/shared/QuickInputBar';
 import { parseNaturalLanguage } from '../utils/nlpHelper';
 
 const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggleTask, itemToOpen, clearItemToOpen }) => {
-  // --- STATE ---
+  //  STATE 
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [filter, setFilter] = useState('All Tasks');
   
@@ -23,7 +23,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
 
   const richGradientStr = `linear-gradient(90deg, rgba(0, 183, 255, 0.7) 0%, rgba(185, 7, 255, 0.7) 100%)`;
 
-  // --- LISTEN FOR NAVIGATION FROM SEARCH ---
+  //  LISTEN FOR NAVIGATION FROM SEARCH 
   useEffect(() => {
     if (itemToOpen && itemToOpen.type === 'task') {
         setEditingTask(itemToOpen.data);
@@ -38,7 +38,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
     }
   }, [itemToOpen]);
 
-  // --- FORMAT SUBTITLE HELPER ---
+  //  FORMAT SUBTITLE HELPER 
   const formatSubtitle = (dateStr, timeStr) => {
       if (!dateStr) return '';
       const date = new Date(`${dateStr}T${timeStr || '00:00'}`);
@@ -56,7 +56,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
       return `Due ${dayName}, ${month} ${dayNum}${nth(dayNum)} at ${timePart}`;
   };
 
-  // --- FILTERING & SORTING LOGIC ---
+  //  FILTERING & SORTING LOGIC 
   const getProcessedTasks = () => {
       let filtered = tasks.filter(task => {
           // A. DATE RANGE CHECK (+/- 7 Days)
@@ -96,7 +96,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
 
   const displayTasks = getProcessedTasks();
 
-  // --- HANDLERS: INTERACTION ---
+  //  HANDLERS: INTERACTION 
 
   // 1. Long Press Detector (For FAB)
   const handlePointerDown = () => {
@@ -120,7 +120,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
     setIsQuickInputOpen(true);
   };
 
-  // --- HANDLERS: ACTIONS ---
+  //  HANDLERS: ACTIONS 
 
   const handleAddNew = () => {
     setEditingTask(null); // Clear editing state (New Mode)
@@ -141,7 +141,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
     }
   };
 
-  // --- HANDLERS: NLP SUBMISSION ---
+  //  HANDLERS: NLP SUBMISSION 
   const handleQuickInputEnter = (text) => {
     // 1. Parse Text
     const result = parseNaturalLanguage(text, new Date());
@@ -166,17 +166,17 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
   return (
     <div className="h-full w-full relative bg-black overflow-hidden flex flex-col">
       
-      {/* --- DATE HEADER --- */}
+      {/*  DATE HEADER  */}
       <div className="w-full z-20 mt-[26px] shrink-0 relative">
          <DateStrip onDateSelected={(dateId) => setSelectedDate(dateId)} />
       </div>
 
-      {/* --- FILTER BAR --- */}
+      {/*  FILTER BAR  */}
       <div className="w-full z-20 shrink-0 -mt-2">
          <FilterBar selectedFilter={filter} onSelect={setFilter} />
       </div>
 
-      {/* --- SCROLLABLE TASK LIST --- */}
+      {/*  SCROLLABLE TASK LIST  */}
       <div className="flex-1 w-full relative overflow-y-auto no-scrollbar px-6 pb-32 pt-4">
          
          {/* Top Fade */}
@@ -215,7 +215,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
          </div>
       </div>
 
-      {/* --- BOTTOM FADE --- */}
+      {/*  BOTTOM FADE  */}
       <div 
         className="absolute bottom-0 left-0 w-full h-[150px] pointer-events-none z-20"
         style={{
@@ -224,7 +224,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
         }}
       />
 
-      {/* --- QUICK INPUT BAR (Overlay) --- */}
+      {/*  QUICK INPUT BAR (Overlay)  */}
       {isQuickInputOpen && (
           <QuickInputBar 
             onEnter={handleQuickInputEnter} 
@@ -232,7 +232,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
           />
       )}
 
-      {/* --- FAB (Floating Action Button) --- */}
+      {/*  FAB (Floating Action Button)  */}
       <div className="absolute bottom-[110px] right-[20px] z-[60]">
           <button 
             className="flex items-center justify-center active:scale-95 transition-transform select-none outline-none"
@@ -255,7 +255,7 @@ const RemindersScreen = ({ tasks, onAddTask, onUpdateTask, onDeleteTask, onToggl
           </button>
       </div>
 
-      {/* --- ADD TASK MODAL --- */}
+      {/*  ADD TASK MODAL  */}
       <AddTaskModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
