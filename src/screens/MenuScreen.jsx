@@ -17,7 +17,7 @@ const MenuScreen = () => {
   return (
     <div className="h-full w-full relative bg-black overflow-hidden flex flex-col">
       
-      {/* --- HEADER --- */}
+      {/*  HEADER  */}
       <div className="px-[23px] pt-[68px] shrink-0 z-10">
         <h1 
           className="font-bold text-[#E5E5E5]"
