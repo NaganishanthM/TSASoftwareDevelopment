@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'; // Added useEffect for timer
+import React, { useState, useEffect } from 'react'; 
 import { BsCalendarEvent, BsCheckCircle, BsPencilSquare, BsCalendarPlus, BsClock } from "react-icons/bs";
 import QuickActionButton from '../components/ui/QuickActionButton';
 import WidgetCard from '../components/ui/WidgetCard';
 import { shouldShowEvent } from '../utils/recurrenceHelper'; 
 
-// Import the Modals
+
 import AddEventModal from '../components/shared/AddEventModal';
 import AddTaskModal from '../components/shared/AddTaskModal';
 import NoteEditor from '../components/shared/NoteEditor';
@@ -20,7 +20,7 @@ const formatTimeRange = (start, durationMins) => {
 
 const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSaveNote }) => {
   
-  // --- MODAL STATE ---
+  // MODAL STATE 
   const [activeModal, setActiveModal] = useState(null); 
   // We need a local time state to trigger re-renders every minute so expired events disappear automatically
   const [now, setNow] = useState(new Date());
@@ -31,12 +31,12 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
     return () => clearInterval(interval);
   }, []);
 
-  // --- STYLES ---
+  //  STYLES 
   const richGradientStr = `linear-gradient(90deg, rgba(0, 183, 255, 0.7) 0%, rgba(185, 7, 255, 0.7) 100%)`;
   const faintGradientStr = `linear-gradient(90deg, rgba(0, 183, 255, 0.2) 0%, rgba(185, 7, 255, 0.2) 100%)`;
   const dimGradientStr = `linear-gradient(90deg, rgba(0, 183, 255, 0.3) 0%, rgba(185, 7, 255, 0.3) 100%)`;
 
-  // --- DATA LOGIC ---
+  //  DATA LOGIC 
   const todayStr = new Date().toISOString().split('T')[0];
   
   // 1. Events Logic (SMART FILTER)
@@ -61,7 +61,7 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
   const nextEvent = relevantEvents[0];
   const upcomingEvents = relevantEvents.slice(1); 
 
-  // 2. Tasks Logic 
+  // 2. Logic 
   const completedTasksCount = tasks.filter(t => t.completed).length;
   const unfinishedTasksCount = tasks.filter(t => !t.completed).length;
   const totalTasks = tasks.length;
@@ -80,7 +80,7 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
   return (
     <div className="flex flex-col min-h-full w-full relative bg-black overflow-hidden">
       
-      {/* Header */}
+        {/*  HEADER  */}
       <div className="px-[23px] pt-[68px] z-10 shrink-0">
         <h1 
           className="font-bold text-[#E5E5E5]"
@@ -100,7 +100,7 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
       <div className="relative mt-[24px] w-full h-[250px] shrink-0">
         <div className="flex overflow-x-auto px-[23px] gap-4 h-full no-scrollbar snap-x items-center z-0">
             
-            {/* CARD 1: NEXT EVENT */}
+            {/* CARD 1: UPCOMING EVENT */}
             <WidgetCard>
                 <div className="h-full flex flex-col items-center relative">
                     <div className="mt-[2px] shrink-0 relative" style={{ width: '75px', height: '75px', borderRadius: '30px' }}>
@@ -110,9 +110,9 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
                         <div className="absolute inset-0 pointer-events-none rounded-[30px]" style={{ padding: '1.5px', background: 'linear-gradient(90deg, rgba(0, 183, 255, 0.7) 0%, rgba(185, 7, 255, 0.7) 100%)', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
                     </div>
                     <div className="w-full mt-4 text-center px-2">
-                        <h3 className="font-semibold text-[#E5E5E5] truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '24px', lineHeight: '30px' }}>
+                        <h2 className="font-semibold text-[#E5E5E5] truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '24px', lineHeight: '30px' }}>
                             {nextEvent ? nextEvent.title : "No Upcoming Events"}
-                        </h3>
+                        </h2>
                         <p className="font-normal mt-1 truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '16px', lineHeight: '20px', color: 'rgba(176, 176, 176, 0.8)' }}>
                             {nextEvent ? formatTimeRange(nextEvent.startTime, nextEvent.duration) : "Relax & Enjoy"}
                         </p>
@@ -153,7 +153,7 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
                 </div>
             </WidgetCard>
 
-            {/* CARD 2: TASKS */}
+            {/* CARD 2: TASK COUNT */}
             <WidgetCard>
                 <div className="h-full flex flex-col items-center">
                     <div className="mt-[2px] shrink-0 relative" style={{ width: '75px', height: '75px', borderRadius: '30px' }}>
@@ -163,9 +163,9 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
                         <div className="absolute inset-0 pointer-events-none rounded-[30px]" style={{ padding: '1.5px', background: richGradientStr, WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
                     </div>
                     <div className="w-full mt-4 text-center px-2">
-                        <h3 className="font-semibold text-[#E5E5E5] truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '24px', lineHeight: '30px' }}>
+                        <h2 className="font-semibold text-[#E5E5E5] truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '24px', lineHeight: '30px' }}>
                             {completedTasksCount} Complete
-                        </h3>
+                        </h2>
                         <p className="font-normal mt-1 truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '16px', lineHeight: '20px', color: 'rgba(176, 176, 176, 0.8)' }}>
                             {unfinishedTasksCount} Unfinished
                         </p>
@@ -199,7 +199,7 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
                 </div>
             </WidgetCard>
 
-            {/* CARD 3: UPCOMING */}
+            {/* CARD 3: UPCOMING EVENTS*/}
             <WidgetCard>
                  <div className="h-full flex flex-col items-center">
                     <div className="mt-[2px] shrink-0 relative" style={{ width: '75px', height: '75px', borderRadius: '30px' }}>
@@ -212,9 +212,9 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
                         {upcomingEvents.length > 0 ? (
                             upcomingEvents.slice(0, 2).map((event) => (
                                 <div key={event.id} className="text-center w-full">
-                                    <h3 className="font-semibold text-[#E5E5E5] truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '18px', lineHeight: '22px' }}>
+                                    <h2 className="font-semibold text-[#E5E5E5] truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '18px', lineHeight: '22px' }}>
                                         {event.title}
-                                    </h3>
+                                    </h2>
                                     <p className="font-normal mt-1 truncate w-full block" style={{ fontFamily: 'Lexend', fontSize: '12px', lineHeight: '15px', color: 'rgba(176, 176, 176, 0.8)' }}>
                                         {formatTimeRange(event.startTime, event.duration)}
                                     </p>
@@ -234,14 +234,14 @@ const DashboardScreen = ({ events = [], tasks = [], onAddEvent, onAddTask, onSav
         <div className="absolute right-0 top-0 pointer-events-none z-10" style={{ width: '82px', height: '100%', background: 'linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000000 100%)', backdropFilter: 'blur(0.5px)' }} />
       </div>
 
-      {/* --- QUICK ACTIONS --- */}
+      {/* QUICK ACTIONS */}
       <div className="flex flex-col items-center gap-[19px] mt-[19px] shrink-0 relative z-[60]">
         <QuickActionButton icon={BsPencilSquare} label="New Note" onClick={() => setActiveModal('note')} />
         <QuickActionButton icon={BsCheckCircle} label="New Task" onClick={() => setActiveModal('task')} />
         <QuickActionButton icon={BsCalendarPlus} label="New Event" onClick={() => setActiveModal('event')} />
       </div>
 
-      {/* --- MODALS --- */}
+      {/* MODALS */}
       {activeModal === 'event' && <AddEventModal isOpen={true} onClose={closeModals} onSave={onAddEvent} selectedDate={todayStr} />}
       {activeModal === 'task' && <AddTaskModal isOpen={true} onClose={closeModals} onSave={onAddTask} selectedDate={todayStr} />}
       {activeModal === 'note' && <NoteEditor note={null} onClose={closeModals} onSave={onSaveNote} />}
