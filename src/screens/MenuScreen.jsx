@@ -27,10 +27,10 @@ const MenuScreen = () => {
         </h1>
       </div>
 
-      {/* --- SCROLLABLE CONTENT --- */}
+      {/*  SCROLLABLE CONTENT  */}
       <div className="flex-1 w-full overflow-y-auto no-scrollbar px-[23px] pb-32 pt-6">
          
-         {/* --- PROFILE CARD --- */}
+         {/*  PROFILE CARD  */}
          {/* Matches CSS: 352x159, Gradient Stroke, Glass Fill */}
          <div className="relative w-full h-[159px] shrink-0 mb-[19px] group active:scale-[0.99] transition-transform">
             {/* Gradient Border */}
@@ -83,7 +83,7 @@ const MenuScreen = () => {
             </div>
          </div>
 
-         {/* --- MENU BUTTONS LIST --- */}
+         {/*  MENU BUTTONS LIST  */}
          <div className="flex flex-col gap-[19px]">
             <MenuButton icon={BsBellFill} label="Notifications" onClick={() => console.log("Notifications")} />
             <MenuButton icon={BsPaletteFill} label="Appearance" onClick={() => console.log("Appearance")} />
@@ -97,7 +97,7 @@ const MenuScreen = () => {
          <div className="h-10"></div>
       </div>
 
-      {/* --- BOTTOM FADE --- */}
+      {/*  BOTTOM FADE  */}
       <div 
         className="absolute bottom-0 left-0 w-full h-[100px] pointer-events-none z-20"
         style={{
